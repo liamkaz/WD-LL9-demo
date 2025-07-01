@@ -1,5 +1,5 @@
 body {
-  font-family: 'Metal Mania', cursive;
+  font-family: "Metal Mania", cursive;
   background-color: black;
   color: white;
   text-align: center;
@@ -7,7 +7,8 @@ body {
   padding: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #e63946;
 }
 
@@ -47,4 +48,30 @@ li {
 #countdown {
   font-size: 1.2rem;
   margin-top: 10px;
+}
+
+/* CTA city button styles */
+.cta-city {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  margin: 0 8px 10px 8px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-family: "Metal Mania", cursive;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-city.active-city {
+  background-color: #fff;
+  color: #e63946;
+  box-shadow: 0 4px 16px #e63946aa;
+  font-weight: bold;
+}
+
+#cityButtons {
+  margin-bottom: 1em;
 }
