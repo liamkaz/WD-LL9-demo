@@ -97,40 +97,37 @@ const tourInfos = {
   London: `🎤 London Tour Date: July 20, 2025<br>📍 Venue: The O2 Arena<br>🕗 Time: Doors open at 7:30 PM<br>London, are you ready? Expect a surprise encore and limited edition tour posters. Public transport is recommended due to high demand.`,
 };
 
-// Function to show tour info for a city
-function showTourInfo(city) {
-  // Find the tourInfo container and update its HTML
+// Function to show or hide tour info for a city
+function toggleTourInfo(city) {
   const tourInfoDiv = document.getElementById("tourInfo");
-  tourInfoDiv.innerHTML = tourInfos[city];
+  const btn = document.getElementById(`city${city}`);
+  // If this city is already active, unselect it and hide info
+  if (btn.classList.contains("active-city")) {
+    btn.classList.remove("active-city");
+    tourInfoDiv.innerHTML = "";
+  } else {
+    // Remove active from all, set this one as active, and show info
+    document
+      .querySelectorAll(".cta-city")
+      .forEach((b) => b.classList.remove("active-city"));
+    btn.classList.add("active-city");
+    tourInfoDiv.innerHTML = tourInfos[city];
+  }
 }
 
 // Show Oslo info by default when the page loads
-showTourInfo("Oslo");
-
-// Add click event listeners for each city button
-// Also add a visual highlight for the selected button
-function setActiveCityButton(city) {
-  document.querySelectorAll(".cta-city").forEach((btn) => {
-    btn.classList.remove("active-city");
-  });
-  document.getElementById(`city${city}`).classList.add("active-city");
-}
+// (If you want all to start unselected, comment out the next two lines)
+toggleTourInfo("Oslo");
 
 document.getElementById("cityOslo").addEventListener("click", () => {
-  showTourInfo("Oslo");
-  setActiveCityButton("Oslo");
+  toggleTourInfo("Oslo");
 });
 document.getElementById("cityBerlin").addEventListener("click", () => {
-  showTourInfo("Berlin");
-  setActiveCityButton("Berlin");
+  toggleTourInfo("Berlin");
 });
 document.getElementById("cityLondon").addEventListener("click", () => {
-  showTourInfo("London");
-  setActiveCityButton("London");
+  toggleTourInfo("London");
 });
-
-// Set Oslo as active on load
-setActiveCityButton("Oslo");
 
 // 4️⃣ On the Road Again
 document.getElementById("nextTourStop").innerHTML = `
